@@ -1,6 +1,6 @@
 package com.oca.app;
 
-import static com.oca.config.GameConfiguration.*;
+import com.oca.config.GameConfiguration;
 
 /**
 * Esta clase es la clase principal donde inicia el juego
@@ -13,7 +13,7 @@ public class App {
 	*/
 	public static void main(String args[]) {
 
-		System.out.println("Welcome to " + GAME_NAME);
+		System.out.println("Welcome to " + GameConfiguration.GAME_NAME);
 
 	}
 	
