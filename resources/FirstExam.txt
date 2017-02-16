@@ -1,0 +1,35 @@
+Hola! Soy Diego Cruz, tal vez me recuerdes en cursos como Java OCA Version 8 o Examenes rapidos
+
+El primer paso para completar este examen es el siguiente:
+
+1.- El siguiente pedazo de codigo esta mal, que tiene de malo?
+
+public class Malo {
+	
+	public malo() {}
+
+	public Malo(String negacion) {}
+
+	public malo(String no, String tiene, String nada, String de, String malo) {}
+}
+
+2.- Cual de las siguientes sentencias es verdadera?
+	- Se puede crear una clase privada
+	- Una clase publica puede tener el metodo main para iniciar la ejecucion ahi
+	- Una constante se crea con la palabra reservada const
+	- Si tengo 2 clases en un solo paquete y se llaman entre si, tengo que importarlas?
+
+3.- Que imprime el siguiente bloque de codigo
+
+	Enemy enemy1 = Enemy("Trump");
+	Enemy enemy2 = Enemy("Trump");
+
+	enemy1 == enemy2 
+
+El segundo paso para completar este examen es el siguiente:
+
+1.- Las clases Character y Enemy son muy visibles, estan casi desnudas! excepto por sus metodos, arreglalas!
+
+2.- Quiero crear un Character y un Enemy en App, pero no se como :S, ayudame!
+
+3.- Me da flojera escribir todo el nombre de la clase GameConfiguration para acceder a sus atributos estaticos, ayudame!
