@@ -21,8 +21,8 @@ public class Malo {
 
 3.- Que imprime el siguiente bloque de codigo
 
-	Enemy enemy1 = Enemy("Trump");
-	Enemy enemy2 = Enemy("Trump");
+	Enemy enemy1 = new Enemy("Trump");
+	Enemy enemy2 = new Enemy("Trump");
 
 	enemy1 == enemy2 
 

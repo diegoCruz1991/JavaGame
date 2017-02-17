@@ -1,6 +1,6 @@
 package com.oca.core.characters;
 
-public class Character {
+public class Enemy {
 
 	public String name;
 	public String age;
