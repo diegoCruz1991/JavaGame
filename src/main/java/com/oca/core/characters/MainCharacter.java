@@ -1,9 +1,11 @@
 package com.oca.core.characters;
 
-public class Character {
+import static com.oca.core.config.CharacterTypes.WARRIOR;
+
+public class MainCharacter {
 
 	private String name;
-	public String type;
+	private String type;
 	private int age;
 	private String gender;
 	private double height;
@@ -12,13 +14,18 @@ public class Character {
 	private int attackPoints;
 	private int defensePoints;
 
-	public Character(String name, String type, int age) {
+	{name = "Player 1"; type = WARRIOR; age = 18; gender = "M"; height = 1.70; lifePoints = 100; magicPoints = 5; attackPoints = 5; defensePoints = 5;}
+
+	public MainCharacter() {}
+
+	public MainCharacter(String name, String type, int age, double lifePoints, int magicPoints, int attackPoints, int defensePoints) {
+		this(lifePoints, magicPoints, attackPoints, defensePoints);
 		this.setName(name);
 		this.setType(type);
 		this.setAge(age);
 	}
 
-	public Character(double lifePoints, int magicPoints, int attackPoints, int defensePoints) {
+	public MainCharacter(double lifePoints, int magicPoints, int attackPoints, int defensePoints) {
 		this.lifePoints = lifePoints;
 		this.magicPoints = magicPoints;
 		this.attackPoints = attackPoints;
@@ -129,11 +136,29 @@ public class Character {
 		}
 	}
 
-	public void attack() {}
+	private void attack(Enemy enemy) {
+		if(enemy != null) {
+			System.out.println(this.name + " is attacking " + enemy.getType() + " enemy");
+			enemy.defend(this);
+		}
+	}
+
+	public void attack(Enemy enemyParam, Enemy... enemies) {
+		System.out.println("Segundo");
+		this.attack(enemyParam);
+		//for(int index = 0; index < enemies.length; index++)
+		for(Enemy enemy : enemies) {
+			this.attack(enemy);
+		}
+	}
 
 	public void walk() {}
 
-	public void defend() {}
+	public void defend(Enemy enemy) {
+		double attackTemp = enemy.getAttackPoints() - this.getDefensePoints(); 
+		System.out.println(this.name + " is losing " + attackTemp + " life points");
+		this.setLifePoints(this.getLifePoints() - attackTemp);
+	}
 
 	public void jump() {}
 
