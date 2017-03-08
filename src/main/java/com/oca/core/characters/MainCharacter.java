@@ -14,7 +14,7 @@ public class MainCharacter {
 	private int attackPoints;
 	private int defensePoints;
 
-	{name = "Player 1"; type = WARRIOR; age = 18; gender = "M"; height = 1.70; lifePoints = 100; magicPoints = 5; attackPoints = 5; defensePoints = 5;}
+	{ name = "player 1"; type = WARRIOR; age = 18; gender = "M"; height = 1.70; lifePoints = 100; magicPoints = 5; attackPoints = 5; defensePoints = 5;}
 
 	public MainCharacter() {}
 
@@ -37,10 +37,15 @@ public class MainCharacter {
 	}
 
 	public void setName(String name) {
-		if(name == null || (name.length() > 8 || name.length() < 1)) {
-			System.out.println("Error - The name is not valid, range 1 to 8");
+		if(name == null || name.trim().isEmpty()) {
+			System.out.println("Error - The name is not valid");
 		} else {
-			this.name = name;
+			String tempName = name.trim();
+			if(tempName.length() > 10) {
+				name = tempName.substring(0, 10);
+			} else {
+				this.name = name;
+			}
 		}
 	}
 
@@ -161,5 +166,14 @@ public class MainCharacter {
 	}
 
 	public void jump() {}
+
+	@Override
+	public boolean equals(Object anObject) {
+		if(anObject instanceof MainCharacter) {
+			MainCharacter another = (MainCharacter)anObject;
+			return this.getName().equals(another.getName());
+		}
+		return false;
+	}
 
 }
