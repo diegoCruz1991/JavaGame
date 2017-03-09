@@ -1,20 +1,11 @@
 package com.oca.core.characters;
 
-import static com.oca.core.config.CharacterTypes.WARRIOR;
-
-public class MainCharacter {
+public class MainCharacter extends AbstractCharacter {
 
 	private String name;
-	private String type;
-	private int age;
-	private String gender;
-	private double height;
-	private double lifePoints;
 	private int magicPoints;
-	private int attackPoints;
-	private int defensePoints;
 
-	{ name = "player 1"; type = WARRIOR; age = 18; gender = "M"; height = 1.70; lifePoints = 100; magicPoints = 5; attackPoints = 5; defensePoints = 5;}
+	{ name = "player 1"; magicPoints = 5;}
 
 	public MainCharacter() {}
 
@@ -26,10 +17,10 @@ public class MainCharacter {
 	}
 
 	public MainCharacter(double lifePoints, int magicPoints, int attackPoints, int defensePoints) {
-		this.lifePoints = lifePoints;
-		this.magicPoints = magicPoints;
-		this.attackPoints = attackPoints;
-		this.defensePoints = defensePoints;
+		this.setLifePoints(lifePoints);
+		this.setMagicPoints(magicPoints);
+		this.setAttackPoints(attackPoints);
+		this.setDefensePoints(defensePoints);
 	}
 
 	public String getName() {
@@ -49,62 +40,6 @@ public class MainCharacter {
 		}
 	}
 
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public int getAge() {
-		return this.age;
-	}
-
-	public void setAge(int age) {
-		if(age > 300 || age < 15) {
-			System.out.println("Error - The age is not valid, range needs to be between 15 to 300");
-		} else {
-			this.age = age;
-		}
-	}
-
-	public String getGender() {
-		return this.gender;
-	}
-
-	public void setGender(String gender) {
-		if(!"M".equalsIgnoreCase(gender) && !"H".equalsIgnoreCase(gender)) {
-			System.out.println("Error - The gender is not valid");
-		} else {
-			this.gender = gender;
-		}
-	}
-
-	public double getHeight() {
-		return this.height;
-	}
-
-	public void setHeight(double height) {
-		if(height > 2.3 || height < 0.5) {
-			System.out.println("Error - The range of height is between 0.50 and 2.30");
-		} else {
-			this.height = height;
-		}
-	}
-
-	public double getLifePoints() {
-		return this.lifePoints;
-	}
-
-	public void setLifePoints(double lifePoints) {
-		if(lifePoints > 120 || lifePoints < 0) {
-			System.out.println("Error - The range of Life Points is between 0 and 120");
-		} else {
-			this.lifePoints = lifePoints;
-		}
-	}
-
 	public int getMagicPoints() {
 		return this.magicPoints;
 	}
@@ -117,55 +52,21 @@ public class MainCharacter {
 		}
 	}
 
-	public int getAttackPoints() {
-		return this.attackPoints;
-	}
-
-	public void setAttackPoints(int attackPoints) {
-		if(attackPoints > 10 || attackPoints < 0) {
-			System.out.println("Error - The range of attack Points is between 0 and 10");
-		} else {
-			this.attackPoints = attackPoints;
-		}
-	}
-
-	public int getDefensePoints() {
-		return this.defensePoints;
-	}
-
-	public void setDefensePoints(int defensePoints) {
-		if(defensePoints > 10 || defensePoints < 0) {
-			System.out.println("Error - The range of defense Points is between 0 and 10");
-		} else {
-			this.defensePoints = defensePoints;
-		}
-	}
-
-	private void attack(Enemy enemy) {
-		if(enemy != null) {
-			System.out.println(this.name + " is attacking " + enemy.getType() + " enemy");
-			enemy.defend(this);
-		}
-	}
-
-	public void attack(Enemy enemyParam, Enemy... enemies) {
-		System.out.println("Segundo");
+	@Override
+	public void attack(AbstractCharacter enemyParam, AbstractCharacter... enemies) {
+		System.out.println(this.getName() + " is attacking an enemy");
 		this.attack(enemyParam);
-		//for(int index = 0; index < enemies.length; index++)
-		for(Enemy enemy : enemies) {
+		
+		for(AbstractCharacter enemy : enemies) {
 			this.attack(enemy);
 		}
 	}
 
-	public void walk() {}
-
-	public void defend(Enemy enemy) {
+	@Override
+	public void defend(AbstractCharacter enemy) {
 		double attackTemp = enemy.getAttackPoints() - this.getDefensePoints(); 
-		System.out.println(this.name + " is losing " + attackTemp + " life points");
 		this.setLifePoints(this.getLifePoints() - attackTemp);
 	}
-
-	public void jump() {}
 
 	@Override
 	public boolean equals(Object anObject) {
